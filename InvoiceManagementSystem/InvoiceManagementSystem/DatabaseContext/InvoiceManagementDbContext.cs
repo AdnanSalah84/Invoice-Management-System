@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InvoiceManagementSystem.Models;
 
 namespace InvoiceManagementSystem.DatabaseContext
 {
@@ -12,5 +13,6 @@ namespace InvoiceManagementSystem.DatabaseContext
         {
 
         }
+        public DbSet<PersonTest> PersonTest { get; set; }
     }
 }
