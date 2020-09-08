@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
-import { DialogModule } from 'primeng/dialog';
 
 import { PersontestRoutingModule } from './persontest-routing.module';
 import { PersontestComponent } from './persontest.component';
@@ -12,8 +10,7 @@ import { PersontestComponent } from './persontest.component';
   imports: [
     CommonModule,
     PersontestRoutingModule,
-    ButtonModule,
-    DialogModule
+
   ]
 })
 export class PersontestModule { }
