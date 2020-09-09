@@ -14,5 +14,8 @@ namespace InvoiceManagementSystem.DatabaseContext
 
         }
         public DbSet<PersonTest> PersonTest { get; set; }
+        public DbSet<Invoice> Invoice { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<Supplier> Supplier { get; set; }
     }
 }
