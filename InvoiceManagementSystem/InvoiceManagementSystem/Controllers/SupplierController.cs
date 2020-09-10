@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using InvoiceManagementSystem.DatabaseContext;
+using InvoiceManagementSystem.Data;
 using InvoiceManagementSystem.Models;
 
 namespace InvoiceManagementSystem.Controllers
@@ -14,9 +14,9 @@ namespace InvoiceManagementSystem.Controllers
     [ApiController]
     public class SupplierController : ControllerBase
     {
-        private readonly InvoiceManagementDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public SupplierController(InvoiceManagementDbContext context)
+        public SupplierController(ApplicationDbContext context)
         {
             _context = context;
         }

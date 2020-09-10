@@ -12,48 +12,48 @@ namespace InvoiceManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InvoiceController : ControllerBase
+    public class PurchaseOrderController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public InvoiceController(ApplicationDbContext context)
+        public PurchaseOrderController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Invoice
+        // GET: api/PurchaseOrder
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoice()
+        public async Task<ActionResult<IEnumerable<PurchaseOrder>>> GetPurchaseOrder()
         {
-            return await _context.Invoice.ToListAsync();
+            return await _context.PurchaseOrder.ToListAsync();
         }
 
-        // GET: api/Invoice/5
+        // GET: api/PurchaseOrder/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Invoice>> GetInvoice(int id)
+        public async Task<ActionResult<PurchaseOrder>> GetPurchaseOrder(int id)
         {
-            var invoice = await _context.Invoice.FindAsync(id);
+            var purchaseOrder = await _context.PurchaseOrder.FindAsync(id);
 
-            if (invoice == null)
+            if (purchaseOrder == null)
             {
                 return NotFound();
             }
 
-            return invoice;
+            return purchaseOrder;
         }
 
-        // PUT: api/Invoice/5
+        // PUT: api/PurchaseOrder/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutInvoice(int id, Invoice invoice)
+        public async Task<IActionResult> PutPurchaseOrder(int id, PurchaseOrder purchaseOrder)
         {
-            if (id != invoice.InvoiceId)
+            if (id != purchaseOrder.PurchaseOrderId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(invoice).State = EntityState.Modified;
+            _context.Entry(purchaseOrder).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace InvoiceManagementSystem.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InvoiceExists(id))
+                if (!PurchaseOrderExists(id))
                 {
                     return NotFound();
                 }
@@ -74,37 +74,37 @@ namespace InvoiceManagementSystem.Controllers
             return NoContent();
         }
 
-        // POST: api/Invoice
+        // POST: api/PurchaseOrder
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Invoice>> PostInvoice(Invoice invoice)
+        public async Task<ActionResult<PurchaseOrder>> PostPurchaseOrder(PurchaseOrder purchaseOrder)
         {
-            _context.Invoice.Add(invoice);
+            _context.PurchaseOrder.Add(purchaseOrder);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetInvoice", new { id = invoice.InvoiceId }, invoice);
+            return CreatedAtAction("GetPurchaseOrder", new { id = purchaseOrder.PurchaseOrderId }, purchaseOrder);
         }
 
-        // DELETE: api/Invoice/5
+        // DELETE: api/PurchaseOrder/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Invoice>> DeleteInvoice(int id)
+        public async Task<ActionResult<PurchaseOrder>> DeletePurchaseOrder(int id)
         {
-            var invoice = await _context.Invoice.FindAsync(id);
-            if (invoice == null)
+            var purchaseOrder = await _context.PurchaseOrder.FindAsync(id);
+            if (purchaseOrder == null)
             {
                 return NotFound();
             }
 
-            _context.Invoice.Remove(invoice);
+            _context.PurchaseOrder.Remove(purchaseOrder);
             await _context.SaveChangesAsync();
 
-            return invoice;
+            return purchaseOrder;
         }
 
-        private bool InvoiceExists(int id)
+        private bool PurchaseOrderExists(int id)
         {
-            return _context.Invoice.Any(e => e.InvoiceId == id);
+            return _context.PurchaseOrder.Any(e => e.PurchaseOrderId == id);
         }
     }
 }

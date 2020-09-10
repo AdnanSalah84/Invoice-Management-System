@@ -12,48 +12,48 @@ namespace InvoiceManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InvoiceController : ControllerBase
+    public class NominalAccountController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public InvoiceController(ApplicationDbContext context)
+        public NominalAccountController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Invoice
+        // GET: api/NominalAccount
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoice()
+        public async Task<ActionResult<IEnumerable<NominalAccount>>> GetNominalAccount()
         {
-            return await _context.Invoice.ToListAsync();
+            return await _context.NominalAccount.ToListAsync();
         }
 
-        // GET: api/Invoice/5
+        // GET: api/NominalAccount/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Invoice>> GetInvoice(int id)
+        public async Task<ActionResult<NominalAccount>> GetNominalAccount(int id)
         {
-            var invoice = await _context.Invoice.FindAsync(id);
+            var nominalAccount = await _context.NominalAccount.FindAsync(id);
 
-            if (invoice == null)
+            if (nominalAccount == null)
             {
                 return NotFound();
             }
 
-            return invoice;
+            return nominalAccount;
         }
 
-        // PUT: api/Invoice/5
+        // PUT: api/NominalAccount/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutInvoice(int id, Invoice invoice)
+        public async Task<IActionResult> PutNominalAccount(int id, NominalAccount nominalAccount)
         {
-            if (id != invoice.InvoiceId)
+            if (id != nominalAccount.NominalAccountId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(invoice).State = EntityState.Modified;
+            _context.Entry(nominalAccount).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace InvoiceManagementSystem.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InvoiceExists(id))
+                if (!NominalAccountExists(id))
                 {
                     return NotFound();
                 }
@@ -74,37 +74,37 @@ namespace InvoiceManagementSystem.Controllers
             return NoContent();
         }
 
-        // POST: api/Invoice
+        // POST: api/NominalAccount
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Invoice>> PostInvoice(Invoice invoice)
+        public async Task<ActionResult<NominalAccount>> PostNominalAccount(NominalAccount nominalAccount)
         {
-            _context.Invoice.Add(invoice);
+            _context.NominalAccount.Add(nominalAccount);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetInvoice", new { id = invoice.InvoiceId }, invoice);
+            return CreatedAtAction("GetNominalAccount", new { id = nominalAccount.NominalAccountId }, nominalAccount);
         }
 
-        // DELETE: api/Invoice/5
+        // DELETE: api/NominalAccount/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Invoice>> DeleteInvoice(int id)
+        public async Task<ActionResult<NominalAccount>> DeleteNominalAccount(int id)
         {
-            var invoice = await _context.Invoice.FindAsync(id);
-            if (invoice == null)
+            var nominalAccount = await _context.NominalAccount.FindAsync(id);
+            if (nominalAccount == null)
             {
                 return NotFound();
             }
 
-            _context.Invoice.Remove(invoice);
+            _context.NominalAccount.Remove(nominalAccount);
             await _context.SaveChangesAsync();
 
-            return invoice;
+            return nominalAccount;
         }
 
-        private bool InvoiceExists(int id)
+        private bool NominalAccountExists(int id)
         {
-            return _context.Invoice.Any(e => e.InvoiceId == id);
+            return _context.NominalAccount.Any(e => e.NominalAccountId == id);
         }
     }
 }
