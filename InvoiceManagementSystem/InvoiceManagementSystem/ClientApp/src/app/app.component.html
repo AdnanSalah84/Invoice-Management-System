@@ -1,6 +1,24 @@
 <body>
   <app-nav-menu></app-nav-menu>
-  <div class="container">
-    <router-outlet></router-outlet>
+  <!--<app-header></app-header>-->
+  <app-main-menu></app-main-menu>
+
+  <!-- BEGIN: Content-->
+  <div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+      <div class="content-header row">
+      </div>
+      <div class="content-body">
+        <!-- Dashboard Ecommerce Starts -->
+        <section id="dashboard-ecommerce">
+          <router-outlet></router-outlet>
+        </section>
+        <!-- Dashboard Ecommerce ends -->
+      </div>
+    </div>
   </div>
+  <!-- END: Content-->
+  <app-footer></app-footer>
 </body>
+
