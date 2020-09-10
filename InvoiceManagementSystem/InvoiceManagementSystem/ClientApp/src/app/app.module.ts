@@ -12,10 +12,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 //import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
-import { HeaderComponent } from './header/header.component';
-import { MainMenuComponent } from './main-menu/main-menu.component';
-import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SideBarComponent } from './side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    HeaderComponent,
-    MainMenuComponent,
-    FooterComponent
+    SideBarComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -9,6 +9,10 @@ import { AuthorizeGuard } from '../api-authorization/authorize.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
+  {
+    path: 'invoice',
+    loadChildren: () => import('./invoice/invoice.module').then((m) => m.InvoiceModule),
+  },
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
 
