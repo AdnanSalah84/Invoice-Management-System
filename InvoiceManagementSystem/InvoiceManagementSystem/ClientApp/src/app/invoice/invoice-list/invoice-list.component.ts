@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { InvoiceService } from "../invoice.service";
 import { Invoice } from "../invoice";
 
@@ -12,26 +13,7 @@ export class InvoiceListComponent implements OnInit {
 
   cols: any[];
 
-  // invoices = [
-  //   {
-  //     field1: {
-  //       subfield1: "test",
-  //     },
-  //     field2: "test",
-  //     field3: "test",
-  //     field4: {
-  //       subfield4: "test",
-  //     },
-  //   },
-  // ];
-
-  constructor(private invoiceService: InvoiceService) {
-    // this.cols = [
-    //   { field: "field1", subfield: "subfield1" },
-    //   { field: "field2" },
-    //   { field: "field3" },
-    //   { field: "field4", subfield: "subfield4" },
-    // ];
+  constructor(private invoiceService: InvoiceService, public router: Router) {
     this.cols = [
       { field: "invoiceId", header: "Invoice Number" },
       { field: "invoiceReference", header: "Invoice Reference" },
@@ -54,5 +36,9 @@ export class InvoiceListComponent implements OnInit {
     this.invoiceService.getInvoices().subscribe((data) => {
       this.invoices = data;
     });
+  }
+
+  InvoiceAdd() {
+    this.router.navigate(["/invoice-add"]);
   }
 }

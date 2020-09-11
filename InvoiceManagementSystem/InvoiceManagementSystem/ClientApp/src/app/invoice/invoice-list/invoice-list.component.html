@@ -1,15 +1,25 @@
 <p-table [columns]="cols" [value]="invoices" [paginator]="true" [rows]="10" #dt>
   <ng-template pTemplate="caption">
-    <div style="text-align: right">
-      <i class="fa fa-search" style="margin: 4px 4px 0 0"></i>
-      <input
-        type="text"
-        pInputText
-        size="50"
-        placeholder="Global Filter"
-        (input)="dt.filterGlobal($event.target.value, 'contains')"
-        style="width: auto"
-      />
+    <div class="ui-helper-clearfix" style="text-align: left">
+      <button
+        type="button"
+        pButton
+        icon="pi pi-plus"
+        iconPos="left"
+        label="Create Invoice"
+        (click)="InvoiceAdd()"
+      ></button>
+      <div style="float: right">
+        <i class="fa fa-search" style="margin: 4px 4px 0 0"></i>
+        <input
+          type="text"
+          pInputText
+          size="50"
+          placeholder="Global Filter"
+          (input)="dt.filterGlobal($event.target.value, 'contains')"
+          style="width: auto"
+        />
+      </div>
     </div>
   </ng-template>
   <ng-template pTemplate="header" let-columns>
@@ -59,7 +69,16 @@
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
-      <td *ngFor="let col of columns">
+      <td
+        *ngFor="let col of columns"
+        [ngClass]="
+          rowData[col.field] === 'Rejected'
+            ? 'rejected'
+            : null || rowData[col.field] === 'Pending'
+            ? 'pending'
+            : null
+        "
+      >
         <div
           *ngIf="col.subfield; then nestedObjectContent; else normalContent"
         ></div>

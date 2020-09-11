@@ -1,0 +1,19 @@
+.pending {
+  background-color: yellowgreen !important;
+  color: #ffffff !important;
+}
+
+.approved {
+  background-color: blueviolet !important;
+  color: #ffffff !important;
+}
+
+.paid {
+  background-color: green !important;
+  color: #ffffff !important;
+}
+
+.rejected {
+  background-color: red !important;
+  color: #ffffff !important;
+}
