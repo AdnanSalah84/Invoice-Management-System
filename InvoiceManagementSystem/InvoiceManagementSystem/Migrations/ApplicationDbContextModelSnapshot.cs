@@ -215,6 +215,9 @@ namespace InvoiceManagementSystem.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("NominalAccountId")
+                        .HasColumnType("int");
+
                     b.Property<int>("PurchaseOrderId")
                         .HasColumnType("int");
 
@@ -225,6 +228,8 @@ namespace InvoiceManagementSystem.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("InvoiceId");
+
+                    b.HasIndex("NominalAccountId");
 
                     b.HasIndex("PurchaseOrderId");
 
@@ -285,9 +290,6 @@ namespace InvoiceManagementSystem.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("NominalAccountId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SupplierCode")
                         .HasColumnType("nvarchar(max)");
 
@@ -298,8 +300,6 @@ namespace InvoiceManagementSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SupplierId");
-
-                    b.HasIndex("NominalAccountId");
 
                     b.ToTable("Supplier");
                 });
@@ -441,6 +441,12 @@ namespace InvoiceManagementSystem.Migrations
 
             modelBuilder.Entity("InvoiceManagementSystem.Models.Invoice", b =>
                 {
+                    b.HasOne("InvoiceManagementSystem.Models.NominalAccount", "NominalAccount")
+                        .WithMany("Invoices")
+                        .HasForeignKey("NominalAccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("InvoiceManagementSystem.Models.PurchaseOrder", "PurchaseOrder")
                         .WithMany("Invoices")
                         .HasForeignKey("PurchaseOrderId")
@@ -450,15 +456,6 @@ namespace InvoiceManagementSystem.Migrations
                     b.HasOne("InvoiceManagementSystem.Models.Supplier", "Supplier")
                         .WithMany("Invoices")
                         .HasForeignKey("SupplierId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("InvoiceManagementSystem.Models.Supplier", b =>
-                {
-                    b.HasOne("InvoiceManagementSystem.Models.NominalAccount", "NominalAccount")
-                        .WithMany()
-                        .HasForeignKey("NominalAccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -17,9 +17,15 @@ namespace InvoiceManagementSystem.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+
+        //}
+
         public DbSet<Invoice> Invoice { get; set; }
-        public DbSet<InvoiceManagementSystem.Models.Supplier> Supplier { get; set; }
-        public DbSet<InvoiceManagementSystem.Models.PurchaseOrder> PurchaseOrder { get; set; }
-        public DbSet<InvoiceManagementSystem.Models.NominalAccount> NominalAccount { get; set; }
+        public DbSet<Supplier> Supplier { get; set; }
+        public DbSet<PurchaseOrder> PurchaseOrder { get; set; }
+        public DbSet<NominalAccount> NominalAccount { get; set; }
     }
 }

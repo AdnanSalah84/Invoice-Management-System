@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +9,7 @@ namespace InvoiceManagementSystem.Models
 {
     public class Invoice
     {
+        [Key]
         public int InvoiceId { get; set; }
         public string InvoiceReference { get; set; }
         public DateTime IssueDate { get; set; }
@@ -26,6 +29,9 @@ namespace InvoiceManagementSystem.Models
 
         public int SupplierId { get; set; }
         public Supplier Supplier { get; set; }
+
+        public int NominalAccountId { get; set; }
+        public NominalAccount NominalAccount { get; set; }
     }
 
 }

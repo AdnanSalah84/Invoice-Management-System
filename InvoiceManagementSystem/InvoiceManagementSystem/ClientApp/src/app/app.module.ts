@@ -13,7 +13,6 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 //import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { AppRoutingModule } from './app-routing.module';
-import { SideBarComponent } from './side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    SideBarComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

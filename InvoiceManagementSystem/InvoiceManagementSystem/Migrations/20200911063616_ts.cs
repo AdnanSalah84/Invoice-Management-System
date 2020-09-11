@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace InvoiceManagementSystem.Migrations
 {
-    public partial class testd : Migration
+    public partial class ts : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -115,6 +115,21 @@ namespace InvoiceManagementSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Supplier",
+                columns: table => new
+                {
+                    SupplierId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SupplierName = table.Column<string>(nullable: true),
+                    SupplierCode = table.Column<string>(nullable: true),
+                    SupplierDisabled = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Supplier", x => x.SupplierId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -221,28 +236,6 @@ namespace InvoiceManagementSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Supplier",
-                columns: table => new
-                {
-                    SupplierId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SupplierName = table.Column<string>(nullable: true),
-                    SupplierCode = table.Column<string>(nullable: true),
-                    SupplierDisabled = table.Column<string>(nullable: true),
-                    NominalAccountId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Supplier", x => x.SupplierId);
-                    table.ForeignKey(
-                        name: "FK_Supplier_NominalAccount_NominalAccountId",
-                        column: x => x.NominalAccountId,
-                        principalTable: "NominalAccount",
-                        principalColumn: "NominalAccountId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Invoice",
                 columns: table => new
                 {
@@ -261,11 +254,18 @@ namespace InvoiceManagementSystem.Migrations
                     ModifiedBy = table.Column<string>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: false),
                     PurchaseOrderId = table.Column<int>(nullable: false),
-                    SupplierId = table.Column<int>(nullable: false)
+                    SupplierId = table.Column<int>(nullable: false),
+                    NominalAccountId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Invoice", x => x.InvoiceId);
+                    table.ForeignKey(
+                        name: "FK_Invoice_NominalAccount_NominalAccountId",
+                        column: x => x.NominalAccountId,
+                        principalTable: "NominalAccount",
+                        principalColumn: "NominalAccountId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Invoice_PurchaseOrder_PurchaseOrderId",
                         column: x => x.PurchaseOrderId,
@@ -331,6 +331,11 @@ namespace InvoiceManagementSystem.Migrations
                 column: "Expiration");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Invoice_NominalAccountId",
+                table: "Invoice",
+                column: "NominalAccountId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Invoice_PurchaseOrderId",
                 table: "Invoice",
                 column: "PurchaseOrderId");
@@ -349,11 +354,6 @@ namespace InvoiceManagementSystem.Migrations
                 name: "IX_PersistedGrants_SubjectId_ClientId_Type",
                 table: "PersistedGrants",
                 columns: new[] { "SubjectId", "ClientId", "Type" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Supplier_NominalAccountId",
-                table: "Supplier",
-                column: "NominalAccountId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -389,13 +389,13 @@ namespace InvoiceManagementSystem.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "NominalAccount");
+
+            migrationBuilder.DropTable(
                 name: "PurchaseOrder");
 
             migrationBuilder.DropTable(
                 name: "Supplier");
-
-            migrationBuilder.DropTable(
-                name: "NominalAccount");
         }
     }
 }
