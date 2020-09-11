@@ -236,6 +236,27 @@ namespace InvoiceManagementSystem.Migrations
                     b.HasIndex("SupplierId");
 
                     b.ToTable("Invoice");
+
+                    b.HasData(
+                        new
+                        {
+                            InvoiceId = 1,
+                            AmountGross = 77.33f,
+                            AmountNet = 89.09f,
+                            AmountTax = 34.97f,
+                            Description = "test 1234",
+                            DueDate = new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified),
+                            FileBody = "bb",
+                            FilePath = "ccc",
+                            InvoiceReference = "test3333",
+                            IssueDate = new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedBy = "John",
+                            ModifiedDate = new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified),
+                            NominalAccountId = 1,
+                            PurchaseOrderId = 1,
+                            Status = "Pending",
+                            SupplierId = 1
+                        });
                 });
 
             modelBuilder.Entity("InvoiceManagementSystem.Models.NominalAccount", b =>
@@ -254,6 +275,26 @@ namespace InvoiceManagementSystem.Migrations
                     b.HasKey("NominalAccountId");
 
                     b.ToTable("NominalAccount");
+
+                    b.HasData(
+                        new
+                        {
+                            NominalAccountId = 1,
+                            NominalAccountCode = "9887nc",
+                            NominalAccountDisabled = "N"
+                        },
+                        new
+                        {
+                            NominalAccountId = 2,
+                            NominalAccountCode = "87nc",
+                            NominalAccountDisabled = "N"
+                        },
+                        new
+                        {
+                            NominalAccountId = 3,
+                            NominalAccountCode = "80nc",
+                            NominalAccountDisabled = "N"
+                        });
                 });
 
             modelBuilder.Entity("InvoiceManagementSystem.Models.PurchaseOrder", b =>
@@ -281,6 +322,35 @@ namespace InvoiceManagementSystem.Migrations
                     b.HasKey("PurchaseOrderId");
 
                     b.ToTable("PurchaseOrder");
+
+                    b.HasData(
+                        new
+                        {
+                            PurchaseOrderId = 1,
+                            PurchaseOrderAmountGross = 76.33f,
+                            PurchaseOrderAmountNet = 43.98f,
+                            PurchaseOrderAmountTax = 33.09f,
+                            PurchaseOrderDisabled = "N",
+                            PurchaseOrderNumber = "97po"
+                        },
+                        new
+                        {
+                            PurchaseOrderId = 2,
+                            PurchaseOrderAmountGross = 65.33f,
+                            PurchaseOrderAmountNet = 4.33f,
+                            PurchaseOrderAmountTax = 78.69f,
+                            PurchaseOrderDisabled = "N",
+                            PurchaseOrderNumber = "67po"
+                        },
+                        new
+                        {
+                            PurchaseOrderId = 3,
+                            PurchaseOrderAmountGross = 11.33f,
+                            PurchaseOrderAmountNet = 22.98f,
+                            PurchaseOrderAmountTax = 99.09f,
+                            PurchaseOrderDisabled = "N",
+                            PurchaseOrderNumber = "22po"
+                        });
                 });
 
             modelBuilder.Entity("InvoiceManagementSystem.Models.Supplier", b =>
@@ -302,6 +372,29 @@ namespace InvoiceManagementSystem.Migrations
                     b.HasKey("SupplierId");
 
                     b.ToTable("Supplier");
+
+                    b.HasData(
+                        new
+                        {
+                            SupplierId = 1,
+                            SupplierCode = "9023tg",
+                            SupplierDisabled = "N",
+                            SupplierName = "Hardware"
+                        },
+                        new
+                        {
+                            SupplierId = 2,
+                            SupplierCode = "97tg",
+                            SupplierDisabled = "N",
+                            SupplierName = "Software"
+                        },
+                        new
+                        {
+                            SupplierId = 3,
+                            SupplierCode = "543tg",
+                            SupplierDisabled = "N",
+                            SupplierName = "Table"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

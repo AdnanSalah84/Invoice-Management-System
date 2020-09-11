@@ -76,6 +76,10 @@
             ? 'rejected'
             : null || rowData[col.field] === 'Pending'
             ? 'pending'
+            : null || rowData[col.field] === 'Paid'
+            ? 'paid'
+            : null || rowData[col.field] === 'Approved'
+            ? 'approved'
             : null
         "
       >

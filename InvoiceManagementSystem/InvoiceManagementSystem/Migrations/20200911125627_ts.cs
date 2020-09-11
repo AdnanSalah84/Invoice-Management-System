@@ -280,6 +280,41 @@ namespace InvoiceManagementSystem.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "NominalAccount",
+                columns: new[] { "NominalAccountId", "NominalAccountCode", "NominalAccountDisabled" },
+                values: new object[,]
+                {
+                    { 1, "9887nc", "N" },
+                    { 2, "87nc", "N" },
+                    { 3, "80nc", "N" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "PurchaseOrder",
+                columns: new[] { "PurchaseOrderId", "PurchaseOrderAmountGross", "PurchaseOrderAmountNet", "PurchaseOrderAmountTax", "PurchaseOrderDisabled", "PurchaseOrderNumber" },
+                values: new object[,]
+                {
+                    { 1, 76.33f, 43.98f, 33.09f, "N", "97po" },
+                    { 2, 65.33f, 4.33f, 78.69f, "N", "67po" },
+                    { 3, 11.33f, 22.98f, 99.09f, "N", "22po" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Supplier",
+                columns: new[] { "SupplierId", "SupplierCode", "SupplierDisabled", "SupplierName" },
+                values: new object[,]
+                {
+                    { 1, "9023tg", "N", "Hardware" },
+                    { 2, "97tg", "N", "Software" },
+                    { 3, "543tg", "N", "Table" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Invoice",
+                columns: new[] { "InvoiceId", "AmountGross", "AmountNet", "AmountTax", "Description", "DueDate", "FileBody", "FilePath", "InvoiceReference", "IssueDate", "ModifiedBy", "ModifiedDate", "NominalAccountId", "PurchaseOrderId", "Status", "SupplierId" },
+                values: new object[] { 1, 77.33f, 89.09f, 34.97f, "test 1234", new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified), "bb", "ccc", "test3333", new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified), "John", new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, "Pending", 1 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",

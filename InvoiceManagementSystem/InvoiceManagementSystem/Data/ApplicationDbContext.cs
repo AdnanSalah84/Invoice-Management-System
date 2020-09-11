@@ -18,10 +18,14 @@ namespace InvoiceManagementSystem.Data
         {
         }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
 
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
+            base.OnModelCreating(modelBuilder);
+        }
+
+
 
         public DbSet<Invoice> Invoice { get; set; }
         public DbSet<Supplier> Supplier { get; set; }
