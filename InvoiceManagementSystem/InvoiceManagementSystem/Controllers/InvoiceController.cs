@@ -25,7 +25,7 @@ namespace InvoiceManagementSystem.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoice()
         {
-            return await _context.Invoice.ToListAsync();
+            return await _context.Invoice.Include(po => po.PurchaseOrder).Include(s=>s.Supplier).Include(na=>na.NominalAccount).ToListAsync();
         }
 
         // GET: api/Invoice/5
