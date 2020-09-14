@@ -9,7 +9,7 @@ import { InvoiceEditComponent } from './invoice-edit.component';
   declarations: [InvoiceEditComponent],
   imports: [
     CommonModule,
-    InvoiceEditRoutingModule
+    InvoiceEditRoutingModule,
   ]
 })
 export class InvoiceEditModule { }

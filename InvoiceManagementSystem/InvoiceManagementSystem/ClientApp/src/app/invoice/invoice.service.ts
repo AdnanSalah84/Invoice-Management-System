@@ -20,9 +20,9 @@ export class InvoiceService {
   constructor(private http: HttpClient) {}
 
   getInvoices(): Observable<Invoice[]> {
-    if (this.invoices) {
-      return of(this.invoices);
-    }
+    //if (this.invoices) {
+    //  return of(this.invoices);
+    //}
     return this.http.get<Invoice[]>(this.invoiceUrl).pipe(
       tap((data) => console.log("All Invoices", JSON.stringify(data))),
       tap((data) => (this.invoices = data)),

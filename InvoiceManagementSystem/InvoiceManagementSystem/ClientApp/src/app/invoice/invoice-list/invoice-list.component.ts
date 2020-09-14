@@ -14,6 +14,7 @@ export class InvoiceListComponent implements OnInit {
   cols: any[];
 
   constructor(private invoiceService: InvoiceService, public router: Router) {
+
     this.cols = [
       { field: "invoiceId", header: "Invoice Number" },
       { field: "invoiceReference", header: "Invoice Reference" },

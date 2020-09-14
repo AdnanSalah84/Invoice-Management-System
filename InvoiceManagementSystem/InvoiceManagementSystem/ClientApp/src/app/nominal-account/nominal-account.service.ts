@@ -22,6 +22,7 @@ export class NominalAccountService {
     if (this.nominalAccounts) {
       return of(this.nominalAccounts);
     }
+
     return this.http.get<NominalAccount[]>(this.nominalAccountUrl).pipe(
       tap((data) => console.log("All NominalAccounts", JSON.stringify(data))),
       tap((data) => (this.nominalAccounts = data)),

@@ -81,7 +81,9 @@ export class InvoiceAddComponent implements OnInit {
 
 
   saveInvoice() {
-    this.invoiceService.saveInvoice(this.invoiceForm.value).subscribe()
+    this.invoiceService.saveInvoice(this.invoiceForm.value).subscribe(() => {
+      this.onSaveComplete();
+    })
   }
 
   onSaveComplete(): void {

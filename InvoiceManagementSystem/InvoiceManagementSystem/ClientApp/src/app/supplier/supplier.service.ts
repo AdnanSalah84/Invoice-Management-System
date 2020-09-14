@@ -25,6 +25,7 @@ export class SupplierService {
     if (this.suppliers) {
       return of(this.suppliers);
     }
+
     return this.http.get<Supplier[]>(this.supplierUrl).pipe(
       tap((data) => console.log("All Suppliers", JSON.stringify(data))),
       tap((data) => (this.suppliers = data)),
