@@ -5,9 +5,10 @@ import { ButtonModule } from "primeng/button";
 
 import { InvoiceListRoutingModule } from "./invoice-list-routing.module";
 import { InvoiceListComponent } from "./invoice-list.component";
+import { InvoiceEditComponent } from "../invoice-edit/invoice-edit.component";
 
 @NgModule({
-  declarations: [InvoiceListComponent],
+  declarations: [InvoiceListComponent, InvoiceEditComponent],
   imports: [CommonModule, InvoiceListRoutingModule, TableModule, ButtonModule],
 })
 export class InvoiceListModule {}

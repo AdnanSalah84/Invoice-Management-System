@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,7 +15,7 @@ namespace InvoiceManagementSystem.Models
         public string SupplierCode { get; set; }
         public string SupplierDisabled { get; set; }
 
-        //public int NominalAccountId { get; set; }
+ 
         //public NominalAccount NominalAccount { get; set; }
 
 

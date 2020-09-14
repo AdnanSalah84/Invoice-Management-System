@@ -69,9 +69,8 @@
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
-      <td
-        *ngFor="let col of columns"
-        [ngClass]="
+      <td *ngFor="let col of columns"
+          [ngClass]="
           rowData[col.field] === 'Rejected'
             ? 'rejected'
             : null || rowData[col.field] === 'Pending'
@@ -81,11 +80,8 @@
             : null || rowData[col.field] === 'Approved'
             ? 'approved'
             : null
-        "
-      >
-        <div
-          *ngIf="col.subfield; then nestedObjectContent; else normalContent"
-        ></div>
+        ">
+        <div *ngIf="col.subfield; then nestedObjectContent; else normalContent"></div>
         <ng-template #nestedObjectContent>
           {{ rowData[col.field][col.subfield] }}
         </ng-template>
@@ -93,24 +89,11 @@
           {{ rowData[col.field] }}
         </ng-template>
       </td>
-    </tr>
-  </ng-template>
-</p-table>
-<!-- 
-<p-table [columns]="cols" [value]="invoices">
-  <ng-template pTemplate="body" let-rowData let-columns="columns">
-    <tr [pSelectableRow]="rowData">
-      <td *ngFor="let col of columns">
-        <div
-          *ngIf="col.subfield; then nested_object_content; else normal_content"
-        ></div>
-        <ng-template #nested_object_content>
-          {{ rowData[col.field][col.subfield] }}
-        </ng-template>
-        <ng-template #normal_content>
-          {{ rowData[col.field] }}
-        </ng-template>
+      <td>
+        <button pButton icon="pi pi-pencil"  [routerLink]="[rowData.invoiceId, 'invoice-edit']"></button>
+        <!--<button pButton icon="pi pi-pencil" (click)="selectInvoice(rowData)"></button>-->
       </td>
     </tr>
   </ng-template>
-</p-table> -->
+</p-table>
+

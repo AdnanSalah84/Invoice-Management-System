@@ -1,1 +1,20 @@
-<p>invoice-add works!</p>
+
+<form novalidate (ngSubmit)="saveInvoice()" [formGroup]="invoiceForm">
+  <p><input type="text" pInputText placeholder="Invoice Reference" formControlName="invoiceReference" /></p>
+  <p> <p-dropdown [options]="purchaseOrders" placeholder="Select a Purchase Order Number" formControlName="purchaseOrderId"></p-dropdown></p>
+  <p> <p-dropdown [options]="suppliers" [filter]="true" placeholder="Select a Supplier Name" formControlName="supplierId"></p-dropdown></p>
+  <p>  <p-calendar placeholder="Issue Date" formControlName="issueDate"></p-calendar></p>
+  <p>  <p-calendar placeholder="Due to Date" formControlName="dueDate"></p-calendar></p>
+
+  <p><input type="text" pInputText pKeyFilter="num" placeholder="Amount (Net)" formControlName="amountNet"></p>
+
+  <p><input type="text" pInputText pKeyFilter="num" placeholder="Amount (Tax)" formControlName="amountTax"></p>
+  <p><input type="text" pInputText pKeyFilter="num" placeholder="Amount (Gross)" formControlName="amountGross"></p>
+  <p><p-dropdown [options]="statuses" formControlName="status"></p-dropdown></p>
+  <p><textarea pInputTextarea formControlName="description"></textarea></p>
+  <p> <p-dropdown [options]="nominalAccounts" [filter]="true" placeholder="Select a Nominal Account Number" formControlName="nominalAccountId"></p-dropdown></p>
+  <p><button pButton type="submit" label="Save" [disabled]="!invoiceForm.valid"></button></p>
+</form>
+
+
+{{invoiceForm.value | json}}

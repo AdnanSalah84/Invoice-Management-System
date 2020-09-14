@@ -12,4 +12,7 @@ export interface Invoice {
   fileBody: string;
   modifiedBy: string;
   modifiedDate: Date;
+  purchaseOrderId?: number; 
+  supplierId?: number; 
+  nominalAccountId?: number; 
 }

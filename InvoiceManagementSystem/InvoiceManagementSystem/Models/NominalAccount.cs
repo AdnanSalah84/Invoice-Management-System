@@ -16,6 +16,6 @@ namespace InvoiceManagementSystem.Models
         //One to Many [Nominal Account to Invoices]
         public ICollection<Invoice> Invoices { get; set; }
 
-
+        //public Supplier Supplier { get; set; }
     }
 }

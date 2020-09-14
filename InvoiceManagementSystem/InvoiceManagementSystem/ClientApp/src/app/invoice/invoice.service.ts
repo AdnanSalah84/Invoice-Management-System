@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+
 import {
   HttpClient,
   HttpErrorResponse,
@@ -48,7 +49,7 @@ export class InvoiceService {
 
   saveInvoice(invoice: Invoice): Observable<Invoice> {
     const headers = new HttpHeaders({ "Content-Type": "application/json" });
-    if (invoice.invoiceId === 0) {
+    if (invoice.invoiceId === 0 || invoice.invoiceId === undefined) {
       return this.createInvoice(invoice, headers);
     }
     return this.updateInvoice(invoice, headers);
@@ -78,7 +79,7 @@ export class InvoiceService {
     invoice: Invoice,
     headers: HttpHeaders
   ): Observable<Invoice> {
-    invoice.invoiceId = null;
+    //invoice.invoiceId = null;
     return this.http
       .post<Invoice>(this.invoiceUrl, invoice, { headers })
       .pipe(

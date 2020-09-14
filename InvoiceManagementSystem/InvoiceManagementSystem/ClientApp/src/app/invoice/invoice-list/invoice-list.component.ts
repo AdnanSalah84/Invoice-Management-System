@@ -41,4 +41,9 @@ export class InvoiceListComponent implements OnInit {
   InvoiceAdd() {
     this.router.navigate(["/invoice-add"]);
   }
+
+  selectInvoice(invoice: Invoice) {
+
+    console.log(invoice)
+  }
 }
