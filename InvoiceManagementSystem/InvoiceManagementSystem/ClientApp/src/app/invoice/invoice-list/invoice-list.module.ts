@@ -8,6 +8,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
+import { PdfViewerModule } from 'ng2-pdf-viewer'; // <- import PdfViewerModule
 
 import { InvoiceListRoutingModule } from "./invoice-list-routing.module";
 import { InvoiceListComponent } from "./invoice-list.component";
@@ -15,12 +16,17 @@ import { InvoiceEditComponent } from "../invoice-edit/invoice-edit.component";
 
 @NgModule({
   declarations: [InvoiceListComponent, InvoiceEditComponent],
-  imports: [CommonModule, InvoiceListRoutingModule, TableModule, ButtonModule, ReactiveFormsModule,
+  imports: [CommonModule,
+    InvoiceListRoutingModule,
+    TableModule,
+    ButtonModule,
+    ReactiveFormsModule,
     DropdownModule,
     CalendarModule,
     KeyFilterModule,
     InputTextareaModule,
     ButtonModule,
-    InputTextModule],
+    InputTextModule,
+    PdfViewerModule],
 })
 export class InvoiceListModule { }

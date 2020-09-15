@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'invoice-add',
     loadChildren: () => import('./invoice/invoice-add/invoice-add.module').then((m) => m.InvoiceAddModule),
   },
+  {
+    path: 'invoice-test',
+    loadChildren: () => import('./invoice/invoice-test/invoice-test.module').then((m) => m.InvoiceTestModule),
+  },
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
 

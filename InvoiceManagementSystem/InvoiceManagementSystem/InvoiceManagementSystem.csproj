@@ -40,13 +40,18 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\app-routing.module.ts" />
+    <None Remove="ClientApp\src\app\authentication\fake-backend.ts" />
+    <None Remove="ClientApp\src\app\authentication\jwt.interceptor.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\authentication\fake-backend.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\authentication\jwt.interceptor.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\user\" />
     <Folder Include="ClientApp\src\app\nominal-account\" />
     <Folder Include="ClientApp\src\app\supplier\" />
   </ItemGroup>

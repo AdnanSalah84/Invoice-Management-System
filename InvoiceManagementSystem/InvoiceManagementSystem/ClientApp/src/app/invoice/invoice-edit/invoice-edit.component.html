@@ -1,5 +1,6 @@
-working
+
 <form novalidate (ngSubmit)="saveInvoice()" [formGroup]="invoiceForm">
+
   <p><input type="text" pInputText placeholder="Invoice Reference" formControlName="invoiceReference" /></p>
   <p> <p-dropdown [options]="purchaseOrders" formControlName="purchaseOrderId"></p-dropdown></p>
   <p> <p-dropdown [options]="suppliers" [filter]="true" placeholder="Select a Supplier Name" formControlName="supplierId"></p-dropdown></p>
@@ -7,7 +8,6 @@ working
   <p>  <p-calendar placeholder="Due to Date" formControlName="dueDate"></p-calendar></p>
 
   <p><input type="text" pInputText pKeyFilter="num" placeholder="Amount (Net)" formControlName="amountNet"></p>
-
   <p><input type="text" pInputText pKeyFilter="num" placeholder="Amount (Tax)" formControlName="amountTax"></p>
   <p><input type="text" pInputText pKeyFilter="num" placeholder="Amount (Gross)" formControlName="amountGross"></p>
   <p><p-dropdown [options]="statuses" formControlName="status"></p-dropdown></p>
@@ -16,5 +16,5 @@ working
   <p><button pButton type="submit" label="Save" [disabled]="!invoiceForm.valid"></button></p>
 </form>
 
-{{invoiceForm.value | json}}
+<pdf-viewer id="viewer"  [src]="pdfSrc" (after-load-complete)="loadComplete($event)"></pdf-viewer>
 
