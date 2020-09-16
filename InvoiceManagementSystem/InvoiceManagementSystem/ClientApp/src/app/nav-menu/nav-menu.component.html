@@ -44,49 +44,58 @@
   </nav>
 </header>-->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-
-    <button type="button" id="sidebarCollapse" class="navbar-btn">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-align-justify"></i>
-    </button>
-
-    <div class="collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse" id="navbarSupportedContent">
-      <app-login-menu></app-login-menu>
-      <ul class="navbar-nav flex-grow">
-        <li class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }">
-          <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-        </li>
-        <li class="nav-item" [routerLinkActive]="['link-active']">
-          <a class="nav-link text-dark" [routerLink]="['/counter']">Counter</a>
-        </li>
-        <li class="nav-item" [routerLinkActive]="['link-active']">
-          <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
-        </li>
-      </ul>
-      <!--<ul class="nav navbar-nav ml-auto">
-    <li class="nav-item"
-        [routerLinkActive]="['link-active']"
-        [routerLinkActiveOptions]="{ exact: true }">
-      <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Page</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Page</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Page</a>
-    </li>
-  </ul>-->
-    </div>
+<!-- BEGIN: Main Menu-->
+<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+  <div class="navbar-header">
+    <ul class="nav navbar-nav flex-row">
+      <li class="nav-item mr-auto"><a class="navbar-brand"
+          href="../../../html/ltr/vertical-menu-template-semi-dark/index.html">
+          <div class="brand-logo"><img class="logo" src="../../../app-assets/images/logo/logo.png" /></div>
+          <h2 class="brand-text mb-0">Frest</h2>
+        </a></li>
+      <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
+            class="bx bx-x d-block d-xl-none font-medium-4 primary"></i><i
+            class="toggle-icon bx bx-disc font-medium-4 d-none d-xl-block primary" data-ticon="bx-disc"></i></a>
+      </li>
+    </ul>
   </div>
-</nav>
+  <div class="shadow-bottom"></div>
+  <div class="main-menu-content">
+    <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation"
+      data-icon-style="lines">
+      <li class=" nav-item"><a href=""><i class="menu-livicon" data-icon="notebook"></i><span class="menu-title"
+            data-i18n="Invoice">Invoice</span></a>
+        <ul class="menu-content">
+          <li class="active">
+            <!-- <a [routerLink]="['invoice-list']"><i class="bx bx-right-arrow-alt"></i><span
+                class="menu-item" data-i18n="Invoice List">Invoice List</span></a> -->
+            <a href="invoice-list"><i class="bx bx-right-arrow-alt"></i><span class="menu-item"
+                data-i18n="Invoice List">Invoice List</span></a>
+          </li>
+          <li><a href="app-invoice.html"><i class="bx bx-right-arrow-alt"></i><span class="menu-item"
+                data-i18n="Invoice">Invoice</span></a>
+          </li>
+          <li><a href="app-invoice-edit.html"><i class="bx bx-right-arrow-alt"></i><span class="menu-item"
+                data-i18n="Invoice Edit">Invoice Edit</span></a>
+          </li>
+          <li><a href="invoice-add"><i class="bx bx-right-arrow-alt"></i><span class="menu-item"
+                data-i18n="Invoice Add">Invoice
+                Add</span></a>
+          </li>
+          <li *ngIf="currentUser"><a href=""><i class="bx bx-right-arrow-alt"></i><span class="menu-item"
+                data-i18n="Invoice Add">Home Page</span></a>
+          </li>
+          <li *ngIf="isAdmin"><a href="admin"><i class="bx bx-right-arrow-alt"></i><span class="menu-item"
+                data-i18n="Invoice Add">Admin
+                Page Test</span></a>
+          </li>
+          <li *ngIf="currentUser"><a (click)="logout()" style="cursor: pointer;"><i
+                class="bx bx-right-arrow-alt"></i><span class="menu-item" data-i18n="Invoice Add">Log Out</span></a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+</div>
+<!-- END: Main Menu-->

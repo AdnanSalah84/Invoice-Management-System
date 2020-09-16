@@ -11,27 +11,7 @@ import { Invoice } from "../invoice";
 export class InvoiceListComponent implements OnInit {
   invoices: Invoice[];
 
-  cols: any[];
-
-  constructor(private invoiceService: InvoiceService, public router: Router) {
-
-    this.cols = [
-      { field: "invoiceId", header: "Invoice Number" },
-      { field: "invoiceReference", header: "Invoice Reference" },
-      {
-        field: "purchaseOrder",
-        subfield: "purchaseOrderNumber",
-        header: "PO Number",
-      },
-      { field: "supplier", subfield: "supplierName", header: "Supplier Name" },
-      { field: "issueDate", header: "Issue Date" },
-      { field: "dueDate", header: "Due Date" },
-      { field: "amountNet", header: "Amount(NET)" },
-      { field: "amountTax", header: "Amount(TAX)" },
-      { field: "amountGross", header: "Amount(Gross)" },
-      { field: "status", header: "Status" },
-    ];
-  }
+  constructor(private invoiceService: InvoiceService, public router: Router) {}
 
   ngOnInit() {
     this.invoiceService.getInvoices().subscribe((data) => {
@@ -44,7 +24,6 @@ export class InvoiceListComponent implements OnInit {
   }
 
   selectInvoice(invoice: Invoice) {
-
-    console.log(invoice)
+    console.log(invoice);
   }
 }
