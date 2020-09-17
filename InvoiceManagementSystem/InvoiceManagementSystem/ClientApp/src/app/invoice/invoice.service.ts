@@ -47,7 +47,7 @@ export class InvoiceService {
     );
   }
 
-  saveInvoice(invoice: Invoice): Observable<Invoice> {
+  saveInvoice(invoice: Invoice ): Observable<Invoice> {
     const headers = new HttpHeaders({ "Content-Type": "application/json" });
     if (invoice.invoiceId === 0 || invoice.invoiceId === undefined) {
       return this.createInvoice(invoice, headers);
@@ -80,6 +80,7 @@ export class InvoiceService {
     headers: HttpHeaders
   ): Observable<Invoice> {
     //invoice.invoiceId = null;
+
     return this.http
       .post<Invoice>(this.invoiceUrl, invoice, { headers })
       .pipe(
@@ -109,6 +110,19 @@ export class InvoiceService {
       );
   }
 
+  invoicePDFFile(fileToUpload: any) {
+    const url = `${this.invoiceUrl}/pdf`;
+    const formData = new FormData();
+    //for (let i = 0; i < fileToUpload.length; i++) {
+    //  formData.append('file', fileToUpload[i]);
+    //}
+
+    formData.append('file', fileToUpload);
+
+    return this.http.post(url,formData)
+      .pipe(catchError(this.handleError));
+  }
+
   private initializeInvoice(): Invoice {
     // Return an initialized object
     return {
@@ -121,10 +135,11 @@ export class InvoiceService {
       amountGross: 0,
       status: "",
       description: "",
-      filePath: "",
-      fileBody: "",
       modifiedBy: "",
       modifiedDate: null,
+      fileName: "",
+      data: "",
+      contentType: ""
     };
   }
 

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using InvoiceManagementSystem.Data;
 using InvoiceManagementSystem.Models;
+using System.IO;
 
 namespace InvoiceManagementSystem.Controllers
 {
@@ -15,6 +16,7 @@ namespace InvoiceManagementSystem.Controllers
     public class InvoiceController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        public static IFormFile fileUpload;
 
         public InvoiceController(ApplicationDbContext context)
         {
@@ -25,13 +27,14 @@ namespace InvoiceManagementSystem.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoice()
         {
-            return await _context.Invoice.Include(po => po.PurchaseOrder).Include(s=>s.Supplier).Include(na=>na.NominalAccount).ToListAsync();
+            return await _context.Invoice.Include(po => po.PurchaseOrder).Include(s => s.Supplier).Include(na => na.NominalAccount).ToListAsync();
         }
 
         // GET: api/Invoice/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Invoice>> GetInvoice(int id)
         {
+
             var invoice = await _context.Invoice.FindAsync(id);
 
             if (invoice == null)
@@ -80,6 +83,7 @@ namespace InvoiceManagementSystem.Controllers
         [HttpPost]
         public async Task<ActionResult<Invoice>> PostInvoice(Invoice invoice)
         {
+
             _context.Invoice.Add(invoice);
             await _context.SaveChangesAsync();
 
@@ -100,6 +104,34 @@ namespace InvoiceManagementSystem.Controllers
             await _context.SaveChangesAsync();
 
             return invoice;
+        }
+
+        // POST: api/Invoice/PDF
+        [HttpPost("PDF")]
+        public async Task<IActionResult> InvoicePDF(IFormFile file)
+        {
+            //foreach (var uploadFile in file)
+            //{
+
+            file = fileUpload;
+
+            //    System.Console.WriteLine(invoiceId);
+
+            //    var memoryStream = new MemoryStream();
+
+            //    await file.OpenReadStream().CopyToAsync(memoryStream);
+
+            //    Invoice invoiceFile = new Invoice()
+            //    {
+            //        FileName = file.FileName,
+            //        Data = memoryStream.ToArray(),
+            //        ContentType = file.ContentType,
+            //    };
+
+            //    _context.Invoice.Add(invoiceFile);
+            //    await _context.SaveChangesAsync();
+            ////}
+            return Ok();
         }
 
         private bool InvoiceExists(int id)

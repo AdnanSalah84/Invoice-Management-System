@@ -8,11 +8,12 @@ export interface Invoice {
   amountGross: number;
   status: string;
   description: string;
-  filePath: string;
-  fileBody: string;
   modifiedBy: string;
   modifiedDate: Date;
   purchaseOrderId?: number; 
   supplierId?: number; 
-  nominalAccountId?: number; 
+  nominalAccountId?: number;
+  fileName?: string;
+  data?: any;
+  contentType?: string;
 }

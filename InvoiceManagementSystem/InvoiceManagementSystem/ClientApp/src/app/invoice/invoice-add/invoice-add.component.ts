@@ -18,10 +18,14 @@ import { Router } from "@angular/router";
 })
 export class InvoiceAddComponent implements OnInit {
   invoiceForm: FormGroup;
-  purchaseOrders: SelectItem[] = [];
-  suppliers: SelectItem[] = [];
-  nominalAccounts: SelectItem[] = [];
+  //purchaseOrders: SelectItem[] = [];
+  purchaseOrders: PurchaseOrder;
+  //suppliers: SelectItem[] = [];
+  suppliers: Supplier;
+  //nominalAccounts: SelectItem[] = [];
+  nominalAccounts: NominalAccount;
   statuses: SelectItem[];
+  invoicePdfFile: FileList[] = [];
 
   constructor(
     private invoiceService: InvoiceService,
@@ -40,52 +44,58 @@ export class InvoiceAddComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    console.log(this.invoicePdfFile)
+
     this.invoiceForm = this.fb.group({
       invoiceReference: ["", Validators.required],
-      // purchaseOrderId: [null],
-      // supplierId: ["", Validators.required],
-      issueDate: ["", Validators.required],
-      dueDate: ["", Validators.required],
-      // amountNet: [null, Validators.required],
-      // amountTax: [null, Validators.required],
-      // amountGross: [null, Validators.required],
-      // status: ["", Validators.required],
-      // description: [""],
-      // nominalAccountId: ["", Validators.required],
+      purchaseOrderId: [null],
+      supplierId: ["", Validators.required],
+      issueDate: [new Date()],
+      dueDate: [new Date()],
+      amountNet: [null, Validators.required],
+      amountTax: [null, Validators.required],
+      amountGross: [null, Validators.required],
+      status: ["", Validators.required],
+      description: [""],
+      nominalAccountId: ["", Validators.required],
     });
 
     // Supplier
-    this.supplierService.getSuppliers().subscribe((supliers: Supplier[]) => {
-      supliers.map((data) => {
-        this.suppliers.push({
-          label: data.supplierName,
-          value: data.supplierId,
-        });
-      });
+    this.supplierService.getSuppliers().subscribe((supliers: any) => {
+      this.suppliers = supliers;
+      //supliers.map((data) => {
+      //  this.suppliers.push({
+      //    label: data.supplierName,
+      //    value: data.supplierId,
+      //  });
+      //});
     });
 
     // Purchase Order
     this.purchaseOrderService
       .getPurchaseOrders()
-      .subscribe((purchaseOrders: PurchaseOrder[]) => {
-        purchaseOrders.map((data) => {
-          this.purchaseOrders.push({
-            label: data.purchaseOrderNumber,
-            value: data.purchaseOrderId,
-          });
-        });
+      .subscribe((purchaseOrders: any) => {
+        this.purchaseOrders = purchaseOrders;
+        //purchaseOrders.map((data) => {
+        //  this.purchaseOrders.push({
+        //    label: data.purchaseOrderNumber,
+        //    value: data.purchaseOrderId,
+        //  });
+        //});
       });
 
     // Nominal Account
     this.nominalAccountService
       .getNominalAccounts()
-      .subscribe((nominalAccounts: NominalAccount[]) => {
-        nominalAccounts.map((data) => {
-          this.nominalAccounts.push({
-            label: data.nominalAccountCode,
-            value: data.nominalAccountId,
-          });
-        });
+      .subscribe((nominalAccounts: any) => {
+        this.nominalAccounts = nominalAccounts
+        //nominalAccounts.map((data) => {
+        //  this.nominalAccounts.push({
+        //    label: data.nominalAccountCode,
+        //    value: data.nominalAccountId,
+        //  });
+        //});
       });
   }
 
@@ -101,5 +111,15 @@ export class InvoiceAddComponent implements OnInit {
 
     // Navigate back to the product list
     this.router.navigate(["/invoice-list"]);
+  }
+
+  UploadInvoicePDF(event: any) {
+    //const files = event.srcElement.files;
+
+    //for (let i = 0; i < files.length; i++) {
+    //  this.invoicePdfFile.push(files[i]);
+    //}
+    this.invoicePdfFile = event.srcElement.files[0];
+    //this.invoiceService.invoicePDFFile(this.invoicePdfFile).subscribe();
   }
 }

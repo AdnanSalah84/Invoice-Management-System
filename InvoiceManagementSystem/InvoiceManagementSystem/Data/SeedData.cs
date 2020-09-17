@@ -30,7 +30,7 @@ namespace InvoiceManagementSystem.Data
             );
 
             modelBuilder.Entity<Invoice>().HasData(
-                new Invoice { InvoiceId = 1, SupplierId = 1, NominalAccountId = 1, PurchaseOrderId = 1, InvoiceReference = "test3333", Description = "test 1234", Status = "Pending", AmountNet = 89.09f, AmountTax = 34.97f, AmountGross = 77.33f, IssueDate = DateTime.ParseExact("15/06/2015 13:45:00", "dd/MM/yyyy HH:mm:ss", null), DueDate = DateTime.ParseExact("15/06/2015 13:45:00", "dd/MM/yyyy HH:mm:ss", null), ModifiedBy = "John", ModifiedDate = DateTime.ParseExact("15/06/2015 13:45:00", "dd/MM/yyyy HH:mm:ss", null), FileBody = "bb", FilePath = "ccc" }
+                new Invoice { InvoiceId = 1, SupplierId = 1, NominalAccountId = 1, PurchaseOrderId = 1, InvoiceReference = "test3333", Description = "test 1234", Status = "Pending", AmountNet = 89.09f, AmountTax = 34.97f, AmountGross = 77.33f, IssueDate = DateTime.ParseExact("15/06/2015 13:45:00", "dd/MM/yyyy HH:mm:ss", null), DueDate = DateTime.ParseExact("15/06/2015 13:45:00", "dd/MM/yyyy HH:mm:ss", null), ModifiedBy = "John", ModifiedDate = DateTime.ParseExact("15/06/2015 13:45:00", "dd/MM/yyyy HH:mm:ss", null) }
             );
         }
     }

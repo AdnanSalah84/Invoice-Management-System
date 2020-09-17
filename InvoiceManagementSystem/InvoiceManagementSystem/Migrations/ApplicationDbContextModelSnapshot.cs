@@ -191,16 +191,19 @@ namespace InvoiceManagementSystem.Migrations
                     b.Property<float>("AmountTax")
                         .HasColumnType("real");
 
+                    b.Property<string>("ContentType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Data")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FileBody")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FilePath")
+                    b.Property<string>("FileName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InvoiceReference")
@@ -246,8 +249,6 @@ namespace InvoiceManagementSystem.Migrations
                             AmountTax = 34.97f,
                             Description = "test 1234",
                             DueDate = new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified),
-                            FileBody = "bb",
-                            FilePath = "ccc",
                             InvoiceReference = "test3333",
                             IssueDate = new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified),
                             ModifiedBy = "John",

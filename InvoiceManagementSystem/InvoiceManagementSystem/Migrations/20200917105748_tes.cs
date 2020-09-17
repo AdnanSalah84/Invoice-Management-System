@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace InvoiceManagementSystem.Migrations
 {
-    public partial class test : Migration
+    public partial class tes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -249,10 +249,11 @@ namespace InvoiceManagementSystem.Migrations
                     AmountGross = table.Column<float>(nullable: false),
                     Status = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    FilePath = table.Column<string>(nullable: true),
-                    FileBody = table.Column<string>(nullable: true),
                     ModifiedBy = table.Column<string>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: false),
+                    FileName = table.Column<string>(nullable: true),
+                    Data = table.Column<byte[]>(nullable: true),
+                    ContentType = table.Column<string>(nullable: true),
                     PurchaseOrderId = table.Column<int>(nullable: false),
                     SupplierId = table.Column<int>(nullable: false),
                     NominalAccountId = table.Column<int>(nullable: false)
@@ -312,8 +313,8 @@ namespace InvoiceManagementSystem.Migrations
 
             migrationBuilder.InsertData(
                 table: "Invoice",
-                columns: new[] { "InvoiceId", "AmountGross", "AmountNet", "AmountTax", "Description", "DueDate", "FileBody", "FilePath", "InvoiceReference", "IssueDate", "ModifiedBy", "ModifiedDate", "NominalAccountId", "PurchaseOrderId", "Status", "SupplierId" },
-                values: new object[] { 1, 77.33f, 89.09f, 34.97f, "test 1234", new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified), "bb", "ccc", "test3333", new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified), "John", new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, "Pending", 1 });
+                columns: new[] { "InvoiceId", "AmountGross", "AmountNet", "AmountTax", "ContentType", "Data", "Description", "DueDate", "FileName", "InvoiceReference", "IssueDate", "ModifiedBy", "ModifiedDate", "NominalAccountId", "PurchaseOrderId", "Status", "SupplierId" },
+                values: new object[] { 1, 77.33f, 89.09f, 34.97f, null, null, "test 1234", new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified), null, "test3333", new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified), "John", new DateTime(2015, 6, 15, 13, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, "Pending", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

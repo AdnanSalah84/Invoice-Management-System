@@ -19,10 +19,13 @@ namespace InvoiceManagementSystem.Models
         public float AmountGross { get; set; }
         public string Status { get; set; }
         public string Description { get; set; }
-        public string FilePath { get; set; }
-        public string FileBody { get; set; }
         public string ModifiedBy { get; set; }
         public DateTime ModifiedDate { get; set; }
+
+        // PDF file
+        public string FileName { get; set; }
+        public byte[] Data { get; set; }
+        public string ContentType { get; set; }
 
         public int PurchaseOrderId { get; set; }
         public PurchaseOrder PurchaseOrder { get; set; }
